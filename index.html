@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChromaLens - Advanced Color Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-palette"></i>
+                <h1>ChromaLens</h1>
+            </div>
+            <p class="subtitle">画像から美しいカラーパレットを瞬時に抽出</p>
+        </header>
+
+        <section class="upload-section" id="drop-zone">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <div class="upload-content">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <h3>画像をドラッグ＆ドロップ</h3>
+                <p>または <span class="browse-btn">ファイルを選択</span></p>
+                <p class="file-support">JPG, PNG, WEBP 対応</p>
+            </div>
+        </section>
+
+        <section class="analysis-section hidden" id="analysis-section">
+            <div class="image-preview-container">
+                <img id="image-preview" src="" alt="Preview">
+                <div class="crop-controls">
+                    <button id="analyze-btn" class="analyze-btn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> 解析実行
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-container">
+                <div class="section-title">
+                    <h2>Dominant Colors</h2>
+                    <div class="controls">
+                        <span class="color-count-label">Colors: <span id="color-count-value">5</span></span>
+                        <input type="range" id="color-count-slider" min="3" max="10" value="5">
+                    </div>
+                </div>
+
+                <div id="color-bar" class="color-bar-container"></div>
+                <div class="palette-grid" id="palette-grid">
+                    <!-- Colors will be injected here -->
+                </div>
+
+                <div class="section-title" style="margin-top: 3rem;">
+                    <h2>Color Harmonies</h2>
+                </div>
+
+                <div class="harmonies-grid" id="harmonies-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

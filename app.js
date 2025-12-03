@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorCountSlider = document.getElementById('color-count-slider');
     const colorCountValue = document.getElementById('color-count-value');
     const toast = document.getElementById('toast');
+    const changeImageBtn = document.getElementById('change-image-btn');
+    const resetCropBtn = document.getElementById('reset-crop-btn');
 
     console.log('Elements:', { dropZone, fileInput, analysisSection, imagePreview });
 
@@ -94,6 +96,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Change Image Button
+    if (changeImageBtn) {
+        changeImageBtn.addEventListener('click', () => {
+            resetApp();
+        });
+    }
+
+    // Reset Crop Button
+    if (resetCropBtn) {
+        resetCropBtn.addEventListener('click', () => {
+            if (cropper) {
+                cropper.reset();
+            }
+        });
+    }
+
+    function resetApp() {
+        currentImage = null;
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        imagePreview.src = '';
+        fileInput.value = ''; // Reset file input
+
+        analysisSection.classList.add('hidden');
+        dropZone.classList.remove('hidden');
+        dropZone.style.display = 'block'; // Ensure it's visible
+
+        // Clear results
+        paletteGrid.innerHTML = '';
+        const colorBar = document.getElementById('color-bar');
+        if (colorBar) colorBar.innerHTML = '';
+        const scanChart = document.getElementById('scan-chart');
+        if (scanChart) scanChart.innerHTML = '';
+        const harmoniesGrid = document.getElementById('harmonies-grid');
+        if (harmoniesGrid) harmoniesGrid.innerHTML = '';
+    }
+
 
     function handleDrop(e) {
         const dt = e.dataTransfer;
@@ -118,6 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log('Image onload');
                         currentImage = img;
                         imagePreview.src = img.src;
+
+                        // Hide drop zone and show analysis section
+                        dropZone.classList.add('hidden');
+                        dropZone.style.display = 'none';
                         analysisSection.classList.remove('hidden');
 
                         // Initialize Cropper

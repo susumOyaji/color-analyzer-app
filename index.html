@@ -43,12 +43,32 @@
         </section>
 
         <section class="analysis-section hidden" id="analysis-section">
-            <div class="image-preview-container">
-                <img id="image-preview" src="" alt="Preview">
+            <div class="preview-column">
+                <div class="image-controls">
+                    <button id="change-image-btn" class="secondary-btn">
+                        <i class="fa-solid fa-image"></i> 別の画像を選択
+                    </button>
+                    <button id="reset-crop-btn" class="secondary-btn" style="margin-left: 0.5rem;">
+                        <i class="fa-solid fa-expand"></i> 範囲リセット
+                    </button>
+                </div>
+                <div class="image-preview-container">
+                    <img id="image-preview" src="" alt="Preview">
+                </div>
             </div>
 
             <div class="results-container">
                 <div class="section-title">
+                    <h2>Scan Analysis (Left to Right)</h2>
+                    <button id="scan-btn" class="analyze-btn"
+                        style="margin: 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                        <i class="fa-solid fa-chart-column"></i> スキャン解析
+                    </button>
+                </div>
+                <div id="scan-chart" class="scan-chart"
+                    style="display: flex; gap: 0.5rem; margin-bottom: 2rem; min-height: 60px;"></div>
+
+                <div class="section-title" style="margin-top: 3rem;">
                     <h2>Dominant Colors</h2>
                     <div class="action-buttons" style="display: flex; gap: 0.5rem;">
                         <button id="analyze-btn" class="analyze-btn"
@@ -66,16 +86,6 @@
                 <div class="palette-grid" id="palette-grid">
                     <!-- Colors will be injected here -->
                 </div>
-
-                <div class="section-title" style="margin-top: 3rem;">
-                    <h2>Scan Analysis (Left to Right)</h2>
-                    <button id="scan-btn" class="analyze-btn"
-                        style="margin: 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
-                        <i class="fa-solid fa-chart-column"></i> スキャン解析
-                    </button>
-                </div>
-                <div id="scan-chart" class="scan-chart"
-                    style="display: flex; gap: 0.5rem; margin-bottom: 2rem; min-height: 60px;"></div>
 
                 <div class="section-title" style="margin-top: 3rem;">
                     <h2>Color Harmonies</h2>

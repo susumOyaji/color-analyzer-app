@@ -116,6 +116,7 @@ body {
 .logo i {
     font-size: 2rem;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -135,7 +136,7 @@ body {
 .upload-section {
     border: 2px dashed var(--glass-border);
     border-radius: 16px;
-    padding: 4rem 2rem;
+    padding: 2rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -210,7 +211,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 300px;
+    min-height: 200px;
+    max-height: 400px;
 }
 
 #image-preview {
@@ -638,6 +640,8 @@ input[type="range"] {
     white-space: nowrap;
     pointer-events: none;
     opacity: 1;
+}
+
 /* Crop controls */
 .crop-controls {
     position: absolute;
@@ -670,4 +674,30 @@ input[type="range"] {
 
 .analyze-btn:active {
     transform: translateY(0);
+}
+
+/* Secondary Button */
+.image-controls {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }

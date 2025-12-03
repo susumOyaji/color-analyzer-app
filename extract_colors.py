@@ -56,7 +56,7 @@ def extract_colors(image_path, num_colors=5):
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    image_path = r"C:\Users\kanda\OneDrive\Desktop\R-25102.jpg"
+    image_path = r"test.jpg"
     if os.path.exists(image_path):
         extract_colors(image_path, num_colors=20)
     else:

@@ -81,16 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Analyze button not found, event listener not registered');
     }
 
-    // Create and add scan button
-    const cropControls = document.querySelector('.crop-controls');
-    if (cropControls) {
-        const scanBtn = document.createElement('button');
-        scanBtn.id = 'scan-btn';
-        scanBtn.className = 'analyze-btn';
-        scanBtn.style.marginLeft = '1rem';
-        scanBtn.innerHTML = '<i class="fa-solid fa-chart-column"></i> スキャン解析';
-        cropControls.appendChild(scanBtn);
-
+    // Scan button event
+    const scanBtn = document.getElementById('scan-btn');
+    if (scanBtn) {
         scanBtn.addEventListener('click', () => {
             console.log('Scan button clicked');
             if (currentImage) {
@@ -100,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 
     function handleDrop(e) {
         const dt = e.dataTransfer;
@@ -276,36 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render scan chart
     function renderScanChart(slices) {
-        // Create scan chart container if it doesn't exist
-        let scanChartContainer = document.getElementById('scan-chart');
-        if (!scanChartContainer) {
-            const resultsContainer = document.querySelector('.results-container');
-            const firstSection = resultsContainer.querySelector('.section-title');
+        const scanChartContainer = document.getElementById('scan-chart');
+        if (!scanChartContainer) return;
 
-            const scanSection = document.createElement('div');
-            scanSection.innerHTML = '<div class="section-title" id="scan-title"><h2>Scan Analysis (Left to Right)</h2></div><div id="scan-chart" class="scan-chart"></div>';
-            resultsContainer.insertBefore(scanSection, firstSection);
-
-            scanChartContainer = document.getElementById('scan-chart');
-
-            // Add scan button to title
-            const scanTitle = document.getElementById('scan-title');
-            scanTitle.style.display = 'flex';
-            scanTitle.style.justifyContent = 'space-between';
-            scanTitle.style.alignItems = 'center';
-
-            const scanButton = document.createElement('button');
-            scanButton.className = 'analyze-btn';
-            scanButton.style.margin = '0';
-            scanButton.style.padding = '0.5rem 1.5rem';
-            scanButton.innerHTML = '<i class="fa-solid fa-chart-column"></i> スキャン解析';
-            scanButton.addEventListener('click', () => {
-                if (currentImage) {
-                    performScan();
-                }
-            });
-            scanTitle.appendChild(scanButton);
-        }
 
         scanChartContainer.innerHTML = '';
         scanChartContainer.style.display = 'flex';
@@ -337,33 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderPalette(colors, totalPixels) {
         paletteGrid.innerHTML = '';
 
-        // Add analyze button to Dominant Colors title (only once)
-        const dominantTitle = document.querySelector('.results-container .section-title');
-        if (dominantTitle && !document.getElementById('analyze-btn-title')) {
-            dominantTitle.style.display = 'flex';
-            dominantTitle.style.justifyContent = 'space-between';
-            dominantTitle.style.alignItems = 'center';
+        // Analyze button is now static in HTML
 
-            const analyzeButton = document.createElement('button');
-            analyzeButton.id = 'analyze-btn-title';
-            analyzeButton.className = 'analyze-btn';
-            analyzeButton.style.margin = '0';
-            analyzeButton.style.padding = '0.5rem 1.5rem';
-            analyzeButton.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> 解析実行';
-            analyzeButton.addEventListener('click', () => {
-                if (currentImage) {
-                    performAnalysis();
-                }
-            });
-
-            // Insert after controls div if it exists, otherwise append
-            const controls = dominantTitle.querySelector('.controls');
-            if (controls) {
-                dominantTitle.insertBefore(analyzeButton, controls);
-            } else {
-                dominantTitle.appendChild(analyzeButton);
-            }
-        }
 
         colors.forEach((color, index) => {
             const percentage = ((color.count / totalPixels) * 100).toFixed(1);

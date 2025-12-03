@@ -45,16 +45,17 @@
         <section class="analysis-section hidden" id="analysis-section">
             <div class="image-preview-container">
                 <img id="image-preview" src="" alt="Preview">
-                <div class="crop-controls">
-                    <button id="analyze-btn" class="analyze-btn">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> 解析実行
-                    </button>
-                </div>
             </div>
 
             <div class="results-container">
                 <div class="section-title">
                     <h2>Dominant Colors</h2>
+                    <div class="action-buttons" style="display: flex; gap: 0.5rem;">
+                        <button id="analyze-btn" class="analyze-btn"
+                            style="margin: 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> 解析実行
+                        </button>
+                    </div>
                     <div class="controls">
                         <span class="color-count-label">Colors: <span id="color-count-value">5</span></span>
                         <input type="range" id="color-count-slider" min="3" max="10" value="5">
@@ -65,6 +66,16 @@
                 <div class="palette-grid" id="palette-grid">
                     <!-- Colors will be injected here -->
                 </div>
+
+                <div class="section-title" style="margin-top: 3rem;">
+                    <h2>Scan Analysis (Left to Right)</h2>
+                    <button id="scan-btn" class="analyze-btn"
+                        style="margin: 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                        <i class="fa-solid fa-chart-column"></i> スキャン解析
+                    </button>
+                </div>
+                <div id="scan-chart" class="scan-chart"
+                    style="display: flex; gap: 0.5rem; margin-bottom: 2rem; min-height: 60px;"></div>
 
                 <div class="section-title" style="margin-top: 3rem;">
                     <h2>Color Harmonies</h2>

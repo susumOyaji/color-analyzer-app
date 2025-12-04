@@ -701,3 +701,21 @@ input[type="range"] {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-1px);
 }
+
+/* Cropper Customization for better visibility */
+.cropper-view-box {
+    outline: 2px solid var(--accent-primary);
+}
+
+.cropper-dashed {
+    border-color: var(--accent-primary);
+}
+
+.cropper-line {
+    background-color: var(--accent-primary);
+}
+
+.cropper-point {
+    background-color: var(--accent-secondary);
+    opacity: 1;
+}

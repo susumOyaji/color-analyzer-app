@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById('toast');
     const changeImageBtn = document.getElementById('change-image-btn');
     const resetCropBtn = document.getElementById('reset-crop-btn');
+    const scanSlicesSelect = document.getElementById('scan-slices-select');
 
     console.log('Elements:', { dropZone, fileInput, analysisSection, imagePreview });
 
@@ -281,7 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         formData.append('image', blob, 'image.jpg');
-        formData.append('num_slices', 10);
+        const slices = scanSlicesSelect ? scanSlicesSelect.value : 10;
+        formData.append('num_slices', slices);
         formData.append('colors_per_slice', 3);
 
         // Add crop coordinates

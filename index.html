@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -60,10 +60,21 @@
             <div class="results-container">
                 <div class="section-title">
                     <h2>Scan Analysis (Left to Right)</h2>
-                    <button id="scan-btn" class="analyze-btn"
-                        style="margin: 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
-                        <i class="fa-solid fa-chart-column"></i> スキャン解析
-                    </button>
+                    <div class="scan-controls" style="display: flex; gap: 1rem; align-items: center;">
+                        <div class="controls">
+                            <span class="color-count-label">Slices:</span>
+                            <select id="scan-slices-select"
+                                style="background: transparent; color: var(--text-primary); border: none; font-family: var(--font-main); cursor: pointer;">
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <button id="scan-btn" class="analyze-btn"
+                            style="margin: 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            <i class="fa-solid fa-chart-column"></i> スキャン解析
+                        </button>
+                    </div>
                 </div>
                 <div id="scan-chart" class="scan-chart"
                     style="display: flex; gap: 0.5rem; margin-bottom: 2rem; min-height: 60px;"></div>
